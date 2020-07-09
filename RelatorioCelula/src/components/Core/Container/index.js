@@ -1,0 +1,74 @@
+import React from 'react';
+import {View, StyleSheet, Text, TouchableOpacity} from 'react-native';
+import Color from '../../../styles/Colors';
+
+const Container = ({
+  title,
+  actionLabelText,
+  actionButtonText,
+  onPressActionButton,
+  children,
+}) => {
+  return (
+    <View style={styles.container}>
+      {title && <Text style={styles.title}>{title}</Text>}
+
+      {children}
+
+      {(actionLabelText || actionButtonText) && (
+        <View style={styles.actionContainer}>
+          {actionLabelText && (
+            <Text style={styles.actionLabel}> {actionLabelText}</Text>
+          )}
+          {actionButtonText && (
+            <TouchableOpacity
+              style={styles.actionButton}
+              onPress={onPressActionButton}>
+              <Text style={styles.actionButtonIcon}>+</Text>
+              <Text style={styles.actionButtonText}> {actionButtonText}</Text>
+            </TouchableOpacity>
+          )}
+        </View>
+      )}
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: Color.asphalt,
+    margin: 5,
+    borderStyle: 'solid',
+    borderWidth: 1,
+    borderColor: 'rgba(255, 255, 255, 0.3)',
+    borderRadius: 5,
+    padding: 8,
+  },
+  title: {
+    fontSize: 26,
+    color: Color.yellow,
+    paddingBottom: 10,
+  },
+  actionContainer: {
+    flexDirection: 'row',
+  },
+  actionLabel: {
+    flex: 1,
+    fontSize: 10,
+    color: Color.white,
+  },
+  actionButton: {
+    flexDirection: 'row',
+  },
+  actionButtonIcon: {
+    fontSize: 12,
+    color: Color.red,
+    paddingStart: 7,
+  },
+  actionButtonText: {
+    fontSize: 12,
+    color: Color.red,
+  },
+});
+
+export default Container;
