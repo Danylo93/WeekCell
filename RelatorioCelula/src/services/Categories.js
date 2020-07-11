@@ -2,27 +2,28 @@ import 'react-native-get-random-values';
 //import {getUUID} from './UUID';
 import {getRealm} from './Realm';
 import {v1 as uuidv1} from 'uuid';
+import Colors from '../styles/Colors';
 
 export const getDefaultCategories = () => {
   return [
     {
       id: uuidv1(),
       name: 'Membro',
-      color: '#8AFF00',
+      color: Colors.red,
       isFuncao: true,
       order: 0,
     },
     {
       id: uuidv1(),
       name: 'Frequentador',
-      color: '#27ae60',
+      color: Colors.blue,
       isFuncao: true,
       order: 1,
     },
     {
       id: uuidv1(),
       name: 'Visitante',
-      color: '#8c7ae6',
+      color: Colors.green,
       isFuncao: true,
       order: 2,
     },

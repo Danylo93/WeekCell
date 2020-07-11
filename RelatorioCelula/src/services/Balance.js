@@ -1,6 +1,7 @@
 import {getRealm} from './Realm';
+
+import _ from 'lodash';
 import moment from '../vendors/moment';
-import {Collection} from 'realm';
 
 export const getBalance = async (untilDays = 0) => {
   const realm = await getRealm();
@@ -12,16 +13,16 @@ export const getBalance = async (untilDays = 0) => {
       .subtract(untilDays, 'days')
       .toDate();
 
-    entries = entries.filtered('entryAt < 0', date);
+    entries = entries.filtered('entryAt < $0', date);
   }
 
   return entries.sum('quantidade');
 };
 
-export const getBalanceSumByteDate = async days => {
+export const getBalanceSumByDate = async days => {
   const realm = await getRealm();
 
-  const startBalance = await getBalance(days);
+  const startBalance = (await getBalance(days)) || 0;
 
   let entries = realm.objects('Entry');
 
@@ -30,7 +31,7 @@ export const getBalanceSumByteDate = async days => {
       .subtract(days, 'days')
       .toDate();
 
-    entries = entries.filtered('entryAt >= 0', date);
+    entries = entries.filtered('entryAt >= $0', date);
   }
 
   entries = entries.sorted('entryAt');
@@ -39,12 +40,52 @@ export const getBalanceSumByteDate = async days => {
     .groupBy(({entryAt}) => moment(entryAt).format('YYYYMMDD'))
     .map(entry => _.sumBy(entry, 'quantidade'))
     .map((quantidade, index, collection) => {
-      (index === 0 ? startBalance : 0) +
+      return (
+        (index === 0 ? startBalance : 0) +
         _.sum(_.slice(collection, 0, index)) +
-        quantidade;
+        quantidade
+      );
     });
 
-  console.log(JSON.stringify(entries));
+  console.log('getBalanceSumByDate :: ', JSON.stringify(entries));
 
   return entries;
 };
+
+export const getBalanceSumByCategory = async (days, showOthers = true) => {
+  const realm = await getRealm();
+
+  let entries = realm.objects('Entry');
+
+  if (days > 0) {
+    const date = moment()
+      .subtract(days, 'days')
+      .toDate();
+
+    entries = entries.filtered('entryAt >= $0', date);
+  }
+
+  entries = _(entries)
+    .groupBy(({funcao: {id}}) => id)
+    .map(entry => ({
+      funcao: _.omit(entry[0].funcao, 'entries'),
+      quantidade: Math.abs(_.sumBy(entry, 'quantidade')),
+    }))
+    .filter(({quantidade}) => quantidade > 0)
+    .orderBy('quantidade', 'desc');
+
+  console.log('getBalanceSumByCategory :: ', JSON.stringify(entries));
+
+  return entries;
+};
+
+// Salario 1000 - 19/11
+// Aluguel -900 - 19/11
+// Compras -10 -  21/11
+// Compras -20 -  22/11
+
+// [
+//   {category: Salário, amount: 1000}
+//   {category: Aluguel, amount: -900}
+//   {category: Compras, amount: -30}
+// ]

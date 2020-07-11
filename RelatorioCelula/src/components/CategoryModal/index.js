@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import {
   Modal,
   View,
@@ -8,30 +8,16 @@ import {
   StyleSheet,
 } from 'react-native';
 
-//import useCategories from '../../hooks/';
+import useCategories from '../../hooks/useCategories';
 
 import ActionFooter, {ActionPrimaryButton} from '../Core/ActionFooter';
 
-import {getAllCategories} from '../../services/Categories';
-
 import Colors from '../../styles/Colors';
 
-const CategoryModal = ({categoryType, isVisible, onConfirm, onCancel}) => {
+const CategoryModal = ({isVisible, onConfirm, onCancel}) => {
   //const [funcaoCategories, setFuncaoCategories] = useState([]);
-  //const [creditCategories, setCreditCategories] = useState([]);
-  const [allCategories, setAllCategories] = useState([]);
-
-  useEffect(() => {
-    async function loadCategories() {
-      //setFuncaoCategories(await getFuncaoCategories());
-      //setCreditCategories(await getCreditCategories());
-      setAllCategories(await getAllCategories());
-    }
-
-    loadCategories();
-
-    console.log('NewEntryCategoryPicker :: useEffect');
-  }, []);
+  //const [quantidadeCategories, setQuantidadeCategories] = useState([]);
+  const [allCategories] = useCategories();
 
   return (
     <Modal animationType="slide" transparent={false} visible={isVisible}>

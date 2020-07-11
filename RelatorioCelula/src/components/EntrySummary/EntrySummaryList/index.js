@@ -1,38 +1,12 @@
 import React from 'react';
-import {View, Text, FlatList, StyleSheet} from 'react-native';
+import {View} from 'react-native';
+// eslint-disable-next-line no-unused-vars
 import Colors from '../../../styles/Colors';
 
-const EntrySummaryList = ({entriesGrouped}) => {
-  return (
-    <View>
-      <FlatList
-        data={entriesGrouped}
-        renderItem={({item}) => (
-          <Text style={styles.entry}>
-            - {item.name} - {item.funcao}
-          </Text>
-        )}
-      />
-    </View>
-  );
-};
+//import EntrySummaryListItem from '../EntrySummaryList/EntrySummaryListItem';
 
-const styles = StyleSheet.create({
-  container: {
-    // flex: 1,
-  },
-  title: {
-    fontSize: 26,
-    fontWeight: 'bold',
-    marginTop: 10,
-    textAlign: 'center',
-    marginBottom: 10,
-    color: Colors.white,
-  },
-  entry: {
-    color: Colors.white,
-    marginBottom: 10,
-  },
-});
+const EntrySummaryList = () => {
+  return <View />;
+};
 
 export default EntrySummaryList;

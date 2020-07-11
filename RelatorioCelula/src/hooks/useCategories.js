@@ -1,16 +1,10 @@
 import {useEffect, useState} from 'react';
-import {
-  getAllCategories,
-  getCreditCategories,
-  getFuncaoCategories,
-  getInitCategories,
-} from '../services/Categories';
+
+import {getAllCategories, getInitCategories} from '../services/Categories';
 
 const useCategories = () => {
   const [allCategories, setAllCategories] = useState();
   const [initCategories, setInitCategories] = useState();
-  const [funcaoCategories, setFuncaoCategories] = useState();
-  const [creditCategories, setCreditCategories] = useState();
 
   useEffect(() => {
     const loadAllCategories = async () => {
@@ -18,26 +12,16 @@ const useCategories = () => {
       setAllCategories(data);
     };
 
-    const loadInitCategories = async () => {
+    const loadInitCategory = async () => {
       const data = await getInitCategories();
       setInitCategories(data);
     };
 
-    const loadCreditCategories = async () => {
-      const data = await getCreditCategories();
-      setCreditCategories(data);
-    };
-
-    const loadFuncaoCategories = async () => {
-      const data = await getFuncaoCategories();
-      setFuncaoCategories(data);
-    };
-
     loadAllCategories();
-    loadInitCategories();
-    loadCreditCategories();
-    loadFuncaoCategories();
+    loadInitCategory();
   }, []);
 
-  return [allCategories, initCategories, funcaoCategories, creditCategories];
+  return [allCategories, initCategories];
 };
+
+export default useCategories;

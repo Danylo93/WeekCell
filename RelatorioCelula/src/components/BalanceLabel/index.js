@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React, {useState} from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import Colors from '../../styles/Colors';
@@ -15,7 +15,7 @@ const BalanceLabel = () => {
         colors={[Colors.violet, Colors.blue]}>
         <Text style={styles.quantidade}>{balance}</Text>
       </LinearGradient>
-      <Text style={styles.label}>membros</Text>
+      <Text style={styles.label}>pessoas</Text>
     </View>
   );
 };

@@ -7,7 +7,7 @@ const BalancePanelLabel = ({currentBalance}) => {
     <View style={styles.container}>
       <Text style={styles.label}>Sua Célula tem:</Text>
       <Text style={styles.value}>{currentBalance}</Text>
-      <Text style={styles.label}>membros</Text>
+      <Text style={styles.label}>pessoas</Text>
     </View>
   );
 };

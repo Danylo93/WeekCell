@@ -20,7 +20,7 @@ export const getEntries = async (days, funcao, quantidade) => {
   }
   if (funcao && funcao.id) {
     console.log('getEntries :: funcao', JSON.stringify(funcao));
-    realm = realm.filtered('funcao == $0', funcao);
+    realm = realm.filtered('funcao == $0', String(funcao));
   }
   if (quantidade) {
     console.log('getEntries :: quantidade', JSON.stringify(quantidade));
@@ -44,6 +44,9 @@ export const saveEntry = async (value, entry = {}) => {
         idade: value.idade || entry.idade,
         funcao: value.funcao || entry.funcao,
         quantidade: value.quantidade || entry.quantidade,
+        address: value.address || entry.address,
+        latitude: value.latitude || entry.latitude,
+        longitude: value.longitude || entry.longitude,
         entryAt: value.entryAt || entry.entryAt,
         isInit: false,
       };

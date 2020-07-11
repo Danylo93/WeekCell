@@ -15,12 +15,10 @@ import Container from '../../components/Core/Container';
 
 const Home = ({navigation}) => {
   return (
-    <Container
-      title="Week Cell APP"
-      actionLabelText="Aplicativo em Fase de teste">
+    <Container actionLabelText="Aplicativo em Fase de teste">
       <TouchableOpacity style={styles.imagem}>
         <ImageBackground
-          source={require('../../../src/assets/img/celula.jpg')}
+          source={require('../../../src/assets/img/bitmap.png')}
           style={styles.image}
         />
       </TouchableOpacity>
@@ -38,8 +36,7 @@ const Home = ({navigation}) => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: Colors.background,
+    backgroundColor: Colors.black,
   },
 
   title: {
@@ -48,19 +45,19 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   text: {
-    fontSize: 15,
+    fontSize: 30,
     fontWeight: 'bold',
     textAlign: 'center',
     color: Colors.white,
     padding: 50,
   },
   image: {
-    margin: 5,
+    marginTop: 30,
     height: 200,
-    width: 200,
+    width: 300,
   },
   input: {
-    backgroundColor: Colors.white,
+    backgroundColor: Colors.champagne,
     borderStyle: 'solid',
     borderWidth: 1,
     borderColor: Colors.asphalt,
@@ -72,7 +69,7 @@ const styles = StyleSheet.create({
   },
   button: {
     backgroundColor: Colors.blue,
-    width: 300,
+    width: 280,
     height: 70,
     alignSelf: 'center',
     alignItems: 'center',
@@ -80,11 +77,12 @@ const styles = StyleSheet.create({
     shadowColor: Colors.white,
     elevation: 5,
     borderRadius: 10,
-    marginTop: 50,
-    marginBottom: 100,
+    marginTop: 40,
+    marginBottom: 140,
   },
   buttonText: {
     color: Colors.white,
+    fontSize: 30,
   },
   imagem: {
     alignSelf: 'center',

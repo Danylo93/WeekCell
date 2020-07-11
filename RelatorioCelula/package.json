@@ -19,6 +19,7 @@
     "react": "16.9.0",
     "react-native": "^0.63.0-rc.1",
     "react-native-cli": "^2.0.1",
+    "react-native-geocoding": "^0.4.0",
     "react-native-gesture-handler": "^1.6.1",
     "react-native-get-random-values": "^1.4.0",
     "react-native-linear-gradient": "^2.5.6",

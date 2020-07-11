@@ -2,15 +2,13 @@ import React from 'react';
 import Container from '../../components/Core/Container';
 import EntrySummaryList from './EntrySummaryList';
 import EntrySummaryFreq from './EntrySummaryFreq';
+import useBalanceSumByCategory from '../../hooks/useBalanceSumByCategory';
+
 import {View, StyleSheet} from 'react-native';
 
-const entriesGrouped = [
-  {key: '1', funcao: 'Membro', quantidade: 1},
-  {key: '2', funcao: 'Frequntador', quantidade: 20},
-  {key: '3', funcao: 'Visitante', quantidade: ''},
-];
-
 const EntrySummary = ({days = 7, onPressActionButton}) => {
+  const [balanceSum] = useBalanceSumByCategory(days);
+
   return (
     <Container
       title="Funções da Célula"
@@ -18,8 +16,8 @@ const EntrySummary = ({days = 7, onPressActionButton}) => {
       actionButtonText="Ver mais..."
       onPressActionButton={onPressActionButton}>
       <View style={styles.inner}>
-        <EntrySummaryFreq />
-        <EntrySummaryList entriesGrouped={entriesGrouped} />
+        <EntrySummaryFreq data={balanceSum} />
+        <EntrySummaryList data={balanceSum} />
       </View>
     </Container>
   );

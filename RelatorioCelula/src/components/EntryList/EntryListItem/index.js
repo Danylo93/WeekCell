@@ -61,7 +61,7 @@ const EntryListItem = ({entry, isFirstItem, isLastItem, onEntryPress}) => {
         </View>
 
         <View style={styles.idade}>
-          <Text style={styles.idadeText}>Idade</Text>
+          <Text style={styles.idadeText}>Idade:</Text>
 
           <Text style={styles.idadeRecebe}>{entry.idade}</Text>
         </View>

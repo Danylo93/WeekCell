@@ -28,12 +28,14 @@ const NewEntryDeleteAction = ({entry, onOkPress}) => {
 };
 const styles = StyleSheet.create({
   button: {
-    backgroundColor: Colors.red,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 150,
+    backgroundColor: Colors.redDark,
     width: 59,
     height: 59,
-    borderRadius: 150,
-    alignItems: 'center',
-    justifyContent: 'center',
+    marginHorizontal: 180,
+    marginTop: -58,
   },
 });
 

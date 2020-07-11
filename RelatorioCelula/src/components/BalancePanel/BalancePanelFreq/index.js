@@ -5,17 +5,17 @@ import useBalanceSumByDate from '../../../hooks/useBalanceSumByDate';
 
 const BalancePanelFreq = () => {
   const [balanceSum] = useBalanceSumByDate();
-  const data = [100, 80, 30, 100, 10, 35, 70];
+  //const data = [100, 80, 30, 100, 10, 35, 70];
 
   return (
     <View style={styles.container}>
       <BarChart
         style={styles.chart}
-        data={data}
+        data={balanceSum}
         svg={{
           fill: 'rgba(0,0,0, .1)',
           stroke: 'rgba(0,0,0, .1)',
-          strokeWidth: 1,
+          strokeWidth: 3,
         }}
         contentInset={{top: 0, bottom: 0}}
       />

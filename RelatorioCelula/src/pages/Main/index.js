@@ -13,12 +13,12 @@ const Main = ({navigation}) => {
         onNewEntryPress={() => navigation.navigate('NewEntry')}
         onHomeApp={() => navigation.navigate('Home')}
       />
-
-      <EntrySummary
-        style={styles.summaryList}
-        onPressActionButton={() => navigation.navigate('Report')}
-      />
       <ScrollView>
+        <EntrySummary
+          style={styles.summaryList}
+          onPressActionButton={() => navigation.navigate('Report')}
+        />
+
         <EntryList
           onPressActionButton={() => navigation.navigate('Report')}
           onEntryPress={entry =>

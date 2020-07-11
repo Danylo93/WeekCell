@@ -15,7 +15,7 @@ import ActionFooter, {
 import BalanceLabel from '../../components/BalanceLabel';
 
 import NewEntryCategoryPicker from '../NewEntry/NewEntryCategoryPicker';
-import NewEntryInput from '../NewEntry/NewEntryInput';
+//import NewEntryInput from '../NewEntry/NewEntryInput';
 import NewEntryIdade from '../NewEntry/NewEntryIdade';
 import NewEntryAddressPicker from '../NewEntry/NewEntryAddressPicker';
 import NewEntryDatePicker from '../NewEntry/NewEntryDatePicker';
@@ -28,6 +28,9 @@ const NewEntry = ({navigation}) => {
     name: '',
     idade: '',
     funcao: {id: null, name: 'Selecione'},
+    address: null,
+    latitude: null,
+    longitude: null,
     quantidade: 1,
     entryAt: new Date(),
   });
@@ -35,12 +38,13 @@ const NewEntry = ({navigation}) => {
   const [funcao, setFuncao] = useState(entry.funcao);
   const [name, setName] = useState(entry.name);
   const [idade, setIdade] = useState(entry.idade);
-  const [quantidade, setQuantidade] = useState(entry.quantidade);
-
-  //const [debit, setDebit] = useState(entry.debit);
+  const [entryAt, setEntryAt] = useState(entry.entryAt);
+  const [address, setAddress] = useState(entry.address);
+  const [latitude, setLatitude] = useState(entry.latitude);
+  const [longitude, setLongitude] = useState(entry.longitude);
 
   const isValid = () => {
-    if (name !== 'Nome' && funcao !== 'Funçao') {
+    if (String(name) !== 'Nome') {
       return true;
     }
 
@@ -52,6 +56,10 @@ const NewEntry = ({navigation}) => {
       funcao: String(funcao),
       name: name,
       idade: idade,
+      address: address,
+      latitude: latitude,
+      longitude: longitude,
+      entryAt: entryAt,
     };
 
     saveEntry(data, entry);
@@ -85,8 +93,15 @@ const NewEntry = ({navigation}) => {
 
         <NewEntryCategoryPicker funcao={funcao} onChangeCategory={setFuncao} />
         <View style={styles.inner}>
-          <NewEntryDatePicker />
-          <NewEntryAddressPicker />
+          <NewEntryDatePicker value={entryAt} onChange={setEntryAt} />
+          <NewEntryAddressPicker
+            address={address}
+            onChange={({latitude, longitude, address}) => {
+              setLatitude(latitude);
+              setLongitude(longitude);
+              setAddress(address);
+            }}
+          />
         </View>
 
         <NewEntryDeleteAction entry={entry} onOkPress={onDelete} />
