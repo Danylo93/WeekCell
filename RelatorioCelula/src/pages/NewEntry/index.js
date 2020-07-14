@@ -27,7 +27,7 @@ const NewEntry = ({navigation}) => {
     id: null,
     name: '',
     idade: '',
-    funcao: {id: null, name: 'Selecione'},
+    category: {id: null, name: 'Selecione'},
     address: null,
     latitude: null,
     longitude: null,
@@ -35,7 +35,7 @@ const NewEntry = ({navigation}) => {
     entryAt: new Date(),
   });
 
-  const [funcao, setFuncao] = useState(entry.funcao);
+  const [category, setCategory] = useState(entry.category);
   const [name, setName] = useState(entry.name);
   const [idade, setIdade] = useState(entry.idade);
   const [entryAt, setEntryAt] = useState(entry.entryAt);
@@ -53,7 +53,7 @@ const NewEntry = ({navigation}) => {
 
   const onSave = () => {
     const data = {
-      funcao: String(funcao),
+      category: category,
       name: name,
       idade: idade,
       address: address,
@@ -91,7 +91,10 @@ const NewEntry = ({navigation}) => {
 
         <NewEntryIdade value={idade} onChangeValue={setIdade} />
 
-        <NewEntryCategoryPicker funcao={funcao} onChangeCategory={setFuncao} />
+        <NewEntryCategoryPicker
+          category={category}
+          onChangeCategory={setCategory}
+        />
         <View style={styles.inner}>
           <NewEntryDatePicker value={entryAt} onChange={setEntryAt} />
           <NewEntryAddressPicker

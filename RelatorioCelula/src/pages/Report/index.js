@@ -1,11 +1,5 @@
 import React, {useState} from 'react';
-import {
-  View,
-  TouchableOpacity,
-  Text,
-  ScrollView,
-  StyleSheet,
-} from 'react-native';
+import {View, TouchableOpacity, Text, StyleSheet} from 'react-native';
 
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
@@ -28,7 +22,7 @@ const Report = ({navigation}) => {
   const [categoryModalVisible, setCategoryModalVisible] = useState(false);
 
   const [relativeDays, setRelativeDays] = useState(7);
-  const [category, setFuncao] = useState({
+  const [category, setCategory] = useState({
     id: null,
     name: 'Todas as Funções',
   });
@@ -39,7 +33,7 @@ const Report = ({navigation}) => {
   };
 
   const onCategoryPress = item => {
-    setFuncao(item);
+    setCategory(item);
     onCategoryClosePress();
   };
 
@@ -96,10 +90,9 @@ const Report = ({navigation}) => {
           onCancel={onCategoryClosePress}
         />
       </View>
-      <ScrollView>
-        <EntrySummary />
-        <EntryList days={relativeDays} category={category} />
-      </ScrollView>
+
+      <EntrySummary />
+      <EntryList days={relativeDays} category={category} />
 
       <ActionFooter>
         <ActionPrimaryButton

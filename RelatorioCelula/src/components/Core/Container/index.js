@@ -45,9 +45,11 @@ const styles = StyleSheet.create({
     padding: 8,
   },
   title: {
-    fontSize: 26,
-    color: Color.yellow,
+    fontSize: 20,
+    color: Color.white,
     paddingBottom: 10,
+    textAlign: 'center',
+    fontWeight: 'bold',
   },
   actionContainer: {
     flexDirection: 'row',
@@ -62,12 +64,12 @@ const styles = StyleSheet.create({
   },
   actionButtonIcon: {
     fontSize: 12,
-    color: Color.red,
+    color: Color.yellow,
     paddingStart: 7,
   },
   actionButtonText: {
     fontSize: 12,
-    color: Color.red,
+    color: Color.yellow,
   },
 });
 

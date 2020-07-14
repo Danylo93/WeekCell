@@ -10,7 +10,7 @@ const EntryListItem = ({entry, isFirstItem, isLastItem, onEntryPress}) => {
   const bulletLineY = isFirstItem ? 25 : 0;
   const bulletLineHeight = isLastItem ? 25 : 50;
   const showBulletLine = !(isFirstItem && isLastItem);
-  const bulletColor = entry.funcao.color || Colors.white;
+  const bulletColor = entry.category.color || Colors.white;
 
   return (
     <TouchableOpacity
@@ -60,9 +60,11 @@ const EntryListItem = ({entry, isFirstItem, isLastItem, onEntryPress}) => {
           </View>
         </View>
 
+        <View style={styles.funcao}>
+          <Text style={styles.funcaoText}>{entry.description}</Text>
+        </View>
         <View style={styles.idade}>
-          <Text style={styles.idadeText}>Idade:</Text>
-
+          <Text style={styles.funcaoIdade}>Idade:</Text>
           <Text style={styles.idadeRecebe}>{entry.idade}</Text>
         </View>
       </View>
@@ -107,19 +109,31 @@ const styles = StyleSheet.create({
   adressIconText: {
     color: Colors.metal,
   },
-  idade: {
+  funcao: {
     justifyContent: 'center',
+    marginEnd: 20,
   },
 
-  idadeText: {
-    fontSize: 17,
+  funcaoText: {
+    fontSize: 15,
     color: Colors.white,
     fontWeight: 'bold',
   },
-  idadeRecebe: {
-    fontSize: 12,
+  funcaoIdade: {
+    fontSize: 15,
     color: Colors.yellow,
     fontWeight: 'bold',
+  },
+  idade: {
+    justifyContent: 'center',
+    marginEnd: 5,
+  },
+  idadeRecebe: {
+    fontSize: 12,
+    color: Colors.white,
+
+    justifyContent: 'center',
+    marginStart: 15,
   },
 });
 

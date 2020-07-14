@@ -10,21 +10,21 @@ export const getDefaultCategories = () => {
       id: uuidv1(),
       name: 'Membro',
       color: Colors.red,
-      isFuncao: true,
+
       order: 0,
     },
     {
       id: uuidv1(),
       name: 'Frequentador',
       color: Colors.blue,
-      isFuncao: true,
+
       order: 1,
     },
     {
       id: uuidv1(),
       name: 'Visitante',
       color: Colors.green,
-      isFuncao: true,
+
       order: 2,
     },
   ];

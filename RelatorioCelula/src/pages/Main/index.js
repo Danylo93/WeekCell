@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, StyleSheet, ScrollView} from 'react-native';
+import {View, StyleSheet} from 'react-native';
 
 import EntrySummary from '../../components/EntrySummary';
 import EntryList from '../../components/EntryList';
@@ -13,21 +13,20 @@ const Main = ({navigation}) => {
         onNewEntryPress={() => navigation.navigate('NewEntry')}
         onHomeApp={() => navigation.navigate('Home')}
       />
-      <ScrollView>
-        <EntrySummary
-          style={styles.summaryList}
-          onPressActionButton={() => navigation.navigate('Report')}
-        />
 
-        <EntryList
-          onPressActionButton={() => navigation.navigate('Report')}
-          onEntryPress={entry =>
-            navigation.navigate('NewEntry', {
-              entry: entry,
-            })
-          }
-        />
-      </ScrollView>
+      <EntrySummary
+        style={styles.summaryList}
+        onPressActionButton={() => navigation.navigate('Report')}
+      />
+
+      <EntryList
+        onPressActionButton={() => navigation.navigate('Report')}
+        onEntryPress={entry =>
+          navigation.navigate('NewEntry', {
+            entry: entry,
+          })
+        }
+      />
     </View>
   );
 };

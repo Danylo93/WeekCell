@@ -4,11 +4,11 @@ import {PieChart} from 'react-native-svg-charts';
 //import useBalanceSumCategory from '../../../hooks/useBalanceSumByCategory';
 
 const EntrySummaryFreq = ({data}) => {
-  const chartData = data.map(({funcao, quantidade}) => ({
-    key: funcao.id,
+  const chartData = data.map(({category, quantidade}) => ({
+    key: category.id,
     value: quantidade,
     svg: {
-      fill: funcao.color,
+      fill: category.color,
     },
     arc: {
       outerRadius: '100%',

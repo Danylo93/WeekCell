@@ -5,7 +5,7 @@ import CategoryModal from '../../../components/CategoryModal';
 
 import Colors from '../../../styles/Colors';
 
-const NewEntryCategoryPicker = ({funcao, onChangeCategory}) => {
+const NewEntryCategoryPicker = ({category, onChangeCategory}) => {
   const [modalVisible, setModalVisible] = useState(false);
 
   const onCategoryPress = item => {
@@ -24,7 +24,7 @@ const NewEntryCategoryPicker = ({funcao, onChangeCategory}) => {
         onPress={() => {
           setModalVisible(true);
         }}>
-        <Text style={styles.pickerButtonText}>{funcao.name}</Text>
+        <Text style={styles.pickerButtonText}>{category.name}</Text>
       </TouchableOpacity>
       <CategoryModal
         isVisible={modalVisible}
