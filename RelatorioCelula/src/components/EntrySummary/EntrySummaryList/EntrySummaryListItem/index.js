@@ -39,6 +39,7 @@ const styles = StyleSheet.create({
     color: Colors.white,
     marginTop: 2,
     textAlign: 'right',
+    marginStart: 10,
   },
 });
 

@@ -3,40 +3,40 @@ import {
   StyleSheet,
   Text,
   ImageBackground,
-  TextInput,
   TouchableOpacity,
+  View,
 } from 'react-native';
 //import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import Colors from '../../styles/Colors';
-import Container from '../../components/Core/Container';
+//import Container from '../../components/Core/Container';
 
 //const [celula /*setCelula*/] = 'Nome da Celula';
 
 const Home = ({navigation}) => {
   return (
-    <Container actionLabelText="Aplicativo em Fase de teste">
+    <View style={styles.container}>
       <TouchableOpacity style={styles.imagem}>
         <ImageBackground
           source={require('../../../src/assets/img/bitmap.png')}
           style={styles.image}
         />
       </TouchableOpacity>
-      <Text style={styles.text}>Informe Abaixo o nome da sua Célula:</Text>
-      <TextInput style={styles.input} placeholder="Nome da Célula" />
+      <Text style={styles.text}>Seja bem vindo!!</Text>
 
       <TouchableOpacity
         style={styles.button}
         onPress={() => navigation.navigate('Main')}>
         <Text style={styles.buttonText}>Começar</Text>
       </TouchableOpacity>
-    </Container>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: Colors.black,
+    backgroundColor: Colors.background,
+    flex: 1,
   },
 
   title: {
@@ -45,14 +45,15 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   text: {
-    fontSize: 30,
+    fontSize: 35,
     fontWeight: 'bold',
     textAlign: 'center',
     color: Colors.white,
-    padding: 50,
+    marginTop: 40,
+    marginBottom: 20,
   },
   image: {
-    marginTop: 30,
+    marginTop: 90,
     height: 200,
     width: 300,
   },
@@ -74,11 +75,10 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     alignItems: 'center',
     justifyContent: 'center',
-    shadowColor: Colors.white,
-    elevation: 5,
-    borderRadius: 10,
-    marginTop: 40,
-    marginBottom: 140,
+    shadowColor: Colors.green,
+    elevation: 55,
+    borderRadius: 20,
+    marginTop: 70,
   },
   buttonText: {
     color: Colors.white,
