@@ -14,6 +14,7 @@ const EntrySchema = {
     category: 'Category',
     idade: 'string',
     quantidade: 'float',
+    nameCelula: 'string',
   },
 };
 

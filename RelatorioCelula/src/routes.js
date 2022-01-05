@@ -4,6 +4,7 @@ import Home from './pages/Home';
 import Main from './pages/Main';
 import NewEntry from './pages/NewEntry';
 import Report from './pages/Report';
+import Welcome from './pages/Welcome';
 
 const Routes = createAppContainer(
   createSwitchNavigator(
@@ -12,9 +13,10 @@ const Routes = createAppContainer(
       Main,
       NewEntry,
       Report,
+      Welcome,
     },
     {
-      initialRouteName: 'Home',
+      initialRouteName: 'Welcome',
       backBehavior: 'history',
     },
   ),

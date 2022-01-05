@@ -48,18 +48,20 @@ export const saveEntry = async (value, entry = {}) => {
         address: value.address || entry.address,
         latitude: value.latitude || entry.latitude,
         longitude: value.longitude || entry.longitude,
-        entryAt: value.entryAt || entry.entryAt,
-        isInit: false,
+        entryAt: value.entryAt || entry.entryAt || new Date(),
+        isInit: value.isInit || false,
+        nameCelula: value.nameCelula || entry.nameCelula,
       };
 
       realm.create('Entry', data, true);
       Alert.alert('Dados Salvos com Sucesso');
     });
+    console.log('saveEntry:: data:', JSON.stringify);
   } catch (error) {
     console.error(
       'saveEntry:: Error on save object',
-      JSON.stringify(entry),
-      console.log(error.message),
+      JSON.stringify(data),
+      console.log(error),
     );
     Alert.alert('Erro ao salvar este lançamento');
   }
